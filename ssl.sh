@@ -17,7 +17,7 @@ locality=JAGOANSSH.COM
 organization=JAGOANSSH.COM
 organizationalunit=ID
 commonname=JAGOANSSH.COM
-email=bJAGOANSSH.COM
+email=JAGOANSSH.COM
 
 # go to root
 cd
@@ -242,8 +242,8 @@ echo "Webmin   : http://$MYIP:10000/"  | tee -a log-install.txt
 echo "Timezone : Asia/Jakarta (GMT +7)"  | tee -a log-install.txt
 echo "IPv6     : [off]"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
-echo "Original Script by Fornesia, Rzengineer & Fawzya"  | tee -a log-install.txt
-echo "Modified by Bustami Arifin"  | tee -a log-install.txt
+echo "JUCKY VENGEANCE"  | tee -a log-install.txt
+echo "Modified by JUCKY VENGEANCE"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Log Instalasi --> /root/log-install.txt"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
