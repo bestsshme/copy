@@ -24,18 +24,6 @@ echo "SET TIMEZONE JAKARTA GMT +7"
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime;
 clear
 echo "
-ENABLE IPV4 AND IPV6
-
-COMPLETE 1%
-"
-echo ipv4 >> /etc/modules
-#echo ipv6 >> /etc/modules
-sysctl -w net.ipv4.ip_forward=1
-sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
-#sed -i 's/#net.ipv6.conf.all.forwarding=1/net.ipv6.conf.all.forwarding=1/g' /etc/sysctl.conf
-sysctl -p
-clear
-echo "
 Remove spam
 COMPLETE 10%
 "
@@ -67,6 +55,17 @@ echo "/usr/sbin/nologin" >> /etc/shells
 
 #text gambar
 apt-get install boxes
+
+# disable ipv6
+echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
+sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
+
+
+# install badvpn
+wget -O /usr/bin/badvpn-udpgw "http://kimnoon.configinter.net/ssh/script/badvpn-udpgw"wget -O /usr/bin/badvpn-udpgw "http://kimnoon.configinter.net/ssh/script/badvpn-udpgw"
+sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300' /etc/rc.local
+chmod +x /usr/bin/badvpn-udpgw
+screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
 
 # squid3
 apt-get update
@@ -281,18 +280,6 @@ chmod +x ssl.sh
 wget -O delete-user-expire.sh "http://centos6.esy.es/file/delete-user-expire"
 chmod +x delete-user-expire.sh
 chmod +x ./delete-user-expire.sh
-
-
-# disable ipv6
-echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
-sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
-
-
-# install badvpn
-wget -O /usr/bin/badvpn-udpgw "http://kimnoon.configinter.net/ssh/script/badvpn-udpgw"wget -O /usr/bin/badvpn-udpgw "http://kimnoon.configinter.net/ssh/script/badvpn-udpgw"
-sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300' /etc/rc.local
-chmod +x /usr/bin/badvpn-udpgw
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
 
 
 # update script vps
